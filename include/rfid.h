@@ -5,7 +5,7 @@
 
 class Logic;
 
-#define NR_OF_READERS   2
+#define NR_OF_READERS   1
 enum RFID_STATE {INCORRECT, CORRECT, MISSING, UNKNOWN};
 
 class Rfid {
@@ -14,7 +14,7 @@ class Rfid {
     void setup();
     void handle();
     bool solved = false;
-    RFID_STATE state[NR_OF_READERS] = { UNKNOWN, UNKNOWN };
+    RFID_STATE state[NR_OF_READERS] = { UNKNOWN };
 
   private:
     Logic &_logic;
@@ -24,9 +24,9 @@ class Rfid {
     String prettyState(uint8_t);
 
     MFRC522 *mfr[NR_OF_READERS];
-    bool tag_present_prev[NR_OF_READERS] = { false, false };
-    bool tag_present[NR_OF_READERS] = { false, false };
-    int error_counter[NR_OF_READERS] = { 0, 0 };
-    bool tag_found[NR_OF_READERS] = { false, false };
+    bool tag_present_prev[NR_OF_READERS] = { false };
+    bool tag_present[NR_OF_READERS] = { false };
+    int error_counter[NR_OF_READERS] = { 0 };
+    bool tag_found[NR_OF_READERS] = { false };
     byte readCards[NR_OF_READERS][4];
 };

@@ -46,8 +46,7 @@ void Logic::status() {
 
       "solved:%s,"
       "unsolvable:%s,"
-      "idol_2:%s,"
-      "idol_3:%s,"
+      "idol_1:%s"
 
       "\r\n"
     , GIT_HASH,
@@ -56,8 +55,7 @@ void Logic::status() {
 
       _solved ? "true" : "false",
       _unsolvable ? "true" : "false",
-      rfid.state[0] == CORRECT ? "true" : "false",
-      rfid.state[1] == CORRECT ? "true" : "false"
+      rfid.state[0] == CORRECT ? "true" : "false"
   );
 
   Serial.print(cMsg);

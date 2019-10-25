@@ -3,12 +3,10 @@
 #include "logic.h"
 #include <SPI.h>
 
-MFRC522 mfrc522_1(8, 7);
-MFRC522 mfrc522_2(10, 9);
+MFRC522 mfrc522_1(10, 9);
 
 byte tags[][4] = {
-  { 0xA7, 0x86, 0x8A, 0xF2 },
-  { 0xF7, 0x81, 0x8A, 0xF2 }
+  { 0xA7, 0x86, 0x8A, 0xF2 }
 };
 
 Rfid::Rfid(Logic &logic)
@@ -20,15 +18,12 @@ void Rfid::setup() {
   SPI.begin();
 
   mfrc522_1.PCD_Init();
-  mfrc522_2.PCD_Init();
 
   delay(4);
   mfrc522_1.PCD_DumpVersionToSerial();
-  mfrc522_2.PCD_DumpVersionToSerial();
 
   // store addresses
   mfr[0] = &mfrc522_1;
-  mfr[1] = &mfrc522_2;
 
   Serial.println("\nReady to Scan...");
 }
