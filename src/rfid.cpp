@@ -42,7 +42,6 @@ void Rfid::handle() {
       Serial.println(prettyState(st));
 
       state[i] = st;
-      checkForPuzzleSolved();
       _logic.status();
     }
   }
@@ -106,13 +105,6 @@ bool Rfid::compareTags(uint8_t index) {
     }
   }
   return true;
-}
-
-void Rfid::checkForPuzzleSolved() {
-  solved = true;
-  for (uint8_t i = 0; i < NR_OF_READERS; i++) {
-    solved = solved && state[i] == CORRECT;
-  }
 }
 
 String Rfid::prettyState(uint8_t state) {
